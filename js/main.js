@@ -73,19 +73,14 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
 
 const waitlistForm = document.querySelector("#waitlist-form");
 const formStatus = document.querySelector("#form-status");
-const FORMSPREE_ID = "YOUR_FORM_ID";
+const WAITLIST_ENDPOINT = "https://formsubmit.co/ajax/hello@everlemon.org";
 
 if (waitlistForm && formStatus) {
   waitlistForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    if (FORMSPREE_ID === "YOUR_FORM_ID") {
-      formStatus.textContent = "The form is not connected yet. For now, please email hello@everlemon.org.";
-      formStatus.classList.add("is-error");
-      return;
-    }
-
     const submitButton = waitlistForm.querySelector('button[type="submit"]');
+    const formData = new FormData(waitlistForm);
 
     if (submitButton) {
       submitButton.disabled = true;
@@ -96,9 +91,9 @@ if (waitlistForm && formStatus) {
     formStatus.classList.remove("is-error");
 
     try {
-      const response = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+      const response = await fetch(WAITLIST_ENDPOINT, {
         method: "POST",
-        body: new FormData(waitlistForm),
+        body: formData,
         headers: { Accept: "application/json" }
       });
 
@@ -109,7 +104,7 @@ if (waitlistForm && formStatus) {
       waitlistForm.reset();
       formStatus.textContent = "Thank you. Your details have been sent and EverLemon will be in touch personally.";
     } catch (error) {
-      formStatus.textContent = "Something went wrong. Please email hello@everlemon.org instead.";
+      formStatus.textContent = "Something went wrong while sending. Please email hello@everlemon.org instead.";
       formStatus.classList.add("is-error");
     } finally {
       if (submitButton) {
