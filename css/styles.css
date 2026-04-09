@@ -1628,6 +1628,26 @@ textarea:focus-visible {
   font-size: 0.775rem;
 }
 
+.product-shot {
+  margin: 0;
+  overflow: hidden;
+  border-radius: 18px;
+  box-shadow: var(--legacy-shadow);
+}
+
+.product-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.product-caption {
+  margin: 0;
+  color: var(--text-mid);
+  font-size: 0.84rem;
+  line-height: 1.6;
+}
+
 .page-home .why-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
