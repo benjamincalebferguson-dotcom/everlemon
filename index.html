@@ -16,7 +16,12 @@
   <header class="site-header">
     <nav class="nav-shell" aria-label="Primary">
       <a class="brandmark" href="#home" aria-label="EverLemon home">
-        <img src="images/optimized/everlemon-logo.png" alt="EverLemon logo">
+        <svg class="brand-icon" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+          <ellipse cx="18" cy="19" rx="11" ry="13" fill="#E8C547"/>
+          <ellipse cx="18" cy="19" rx="7.5" ry="9.5" fill="#F5D96A"/>
+          <path d="M18 6 Q22 2 26 4" stroke="#4A7C59" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+          <ellipse cx="24" cy="4" rx="4" ry="2.5" fill="#4A7C59" transform="rotate(-20 24 4)"/>
+        </svg>
         <span>EverLemon</span>
       </a>
 
@@ -69,6 +74,10 @@
             </div>
             <span>Join families already on the waitlist</span>
           </div>
+
+          <figure class="hero-photo-rail reveal reveal-delay-1">
+            <img src="images/optimized/lemon-orchard-wide.jpg" alt="Rows of lemon trees in an orchard at golden hour">
+          </figure>
         </div>
 
         <div class="hero-visual reveal reveal-delay-2">
@@ -267,7 +276,9 @@
 
         <div class="stories-grid">
           <div class="story-card reveal">
-            <div class="story-card-img">🍋</div>
+            <figure class="story-card-media">
+              <img src="images/child-selfie-holding-lemon.jpg" alt="Child holding a lemon and smiling for a selfie">
+            </figure>
             <div class="story-card-body">
               <div class="story-card-tag">Human memorial</div>
               <h3>"We didn't want another plaque. We wanted something that would grow."</h3>
@@ -283,7 +294,9 @@
           </div>
 
           <div class="story-card reveal reveal-delay-1">
-            <div class="story-card-img">🌿</div>
+            <figure class="story-card-media">
+              <img src="images/optimized/child-smiling-water-pump-community.jpg" alt="Child smiling beside a water pump">
+            </figure>
             <div class="story-card-body">
               <div class="story-card-tag">Pet memorial</div>
               <h3>"Thirteen years. She deserved more than a paw print in clay."</h3>
@@ -299,7 +312,9 @@
           </div>
 
           <div class="story-card reveal reveal-delay-2">
-            <div class="story-card-img">🌸</div>
+            <figure class="story-card-media">
+              <img src="images/optimized/farmer-smiling-with-harvest-basket.jpg" alt="Farmer smiling while carrying a basket of harvest">
+            </figure>
             <div class="story-card-body">
               <div class="story-card-tag">Gift memorial</div>
               <h3>"I gave it as a gift. I didn't expect it to mean so much to them."</h3>
@@ -353,6 +368,15 @@
           <div class="impact-pledge-num">51%</div>
           <h3>The Giving Pledge</h3>
           <p>EverLemon is committed to directing 51% of distributable net profit, after tax and after prudent operating reserves, to a formally governed giving program supporting small-scale farming partners, hunger-alleviation initiatives, and aligned stewardship outcomes.</p>
+        </div>
+
+        <div class="impact-photo-band">
+          <figure class="impact-photo reveal">
+            <img src="images/optimized/farmer-smiling-with-harvest-basket.jpg" alt="Farmer smiling in a grove with a harvest basket">
+          </figure>
+          <figure class="impact-photo reveal reveal-delay-1">
+            <img src="images/optimized/gemini-scene.jpg" alt="Community gathered around a working water pump">
+          </figure>
         </div>
 
         <div class="impact-faq reveal">
@@ -504,34 +528,62 @@
   </main>
 
   <footer class="site-footer">
-    <div class="frame-wide footer-grid">
-      <div>
-        <a class="brandmark brandmark-footer" href="#home">
-          <img src="images/optimized/everlemon-logo.png" alt="EverLemon logo">
-          <span>EverLemon</span>
-        </a>
-        <p class="footer-copy">
-          Turning remembrance into renewal through planting, growth, and a future celebration worth waiting for.
-        </p>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#home" class="footer-logo">
+            <svg class="brand-icon" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+              <ellipse cx="18" cy="19" rx="11" ry="13" fill="#E8C547" opacity="0.88"/>
+              <ellipse cx="18" cy="19" rx="7.5" ry="9.5" fill="#F5D96A" opacity="0.72"/>
+              <path d="M18 6 Q22 2 26 4" stroke="#6B9E7A" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+              <ellipse cx="24" cy="4" rx="4" ry="2.5" fill="#6B9E7A" transform="rotate(-20 24 4)"/>
+            </svg>
+            <span class="footer-logo-text">EverLemon</span>
+          </a>
+          <p>Turning remembrance into renewal. A living memorial ritual for families who want to transform grief into something that grows.</p>
+          <p class="footer-founder">Ben Ferguson — <a href="mailto:hello@everlemon.org">hello@everlemon.org</a></p>
+          <div class="footer-social">
+            <a href="#" aria-label="LinkedIn">in</a>
+            <a href="#" aria-label="Facebook">f</a>
+            <a href="#" aria-label="X">x</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#why">Why EverLemon</a></li>
+            <li><a href="#impact">Our Mission</a></li>
+            <li><a href="#impact">51% Pledge</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#how-it-works">Welcome Kit</a></li>
+            <li><a href="#how-it-works">Harvest Kit</a></li>
+            <li><a href="#stories">Stories</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Get Started</h4>
+          <ul>
+            <li><a href="#contact">Join the Waitlist</a></li>
+            <li><a href="#contact">Gift a Memorial</a></li>
+            <li><a href="#contact">Partner With Us</a></li>
+            <li><a href="#contact">Press Enquiries</a></li>
+          </ul>
+        </div>
       </div>
 
-      <div>
-        <p class="footer-label">Browse</p>
-        <ul class="footer-links">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#how-it-works">The Journey</a></li>
-          <li><a href="#stories">Stories</a></li>
-          <li><a href="#impact">Impact</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <p class="footer-label">Connect</p>
-        <ul class="footer-links">
-          <li><a href="#contact">Join the Waitlist</a></li>
-          <li><a href="mailto:hello@everlemon.org">hello@everlemon.org</a></li>
-          <li><a href="tel:+61478003959">0478 003 959</a></li>
-        </ul>
+      <div class="footer-bottom">
+        <span>&copy; 2026 EverLemon Pty Ltd. All rights reserved.</span>
+        <span class="footer-pledge-badge">51% giving pledge — embedded in governance</span>
+        <span>Made in Australia</span>
       </div>
     </div>
   </footer>
