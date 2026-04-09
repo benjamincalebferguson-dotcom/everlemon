@@ -1,81 +1,121 @@
-// ── Mobile nav toggle ──
-function toggleMenu() {
-  document.getElementById('nav-links').classList.toggle('open');
+const navToggle = document.querySelector(".nav-toggle");
+const navLinks = document.querySelector(".nav-links");
+
+if (navToggle && navLinks) {
+  navToggle.addEventListener("click", () => {
+    const isOpen = navLinks.classList.toggle("is-open");
+    navToggle.setAttribute("aria-expanded", String(isOpen));
+    navToggle.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
+  });
+
+  navLinks.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("is-open");
+      navToggle.setAttribute("aria-expanded", "false");
+      navToggle.setAttribute("aria-label", "Open navigation");
+    });
+  });
 }
 
-// Close mobile nav on link click
-document.querySelectorAll('#nav-links a').forEach(link => {
-  link.addEventListener('click', () => {
-    document.getElementById('nav-links').classList.remove('open');
-  });
+const currentPath = window.location.pathname.split("/").pop() || "index.html";
+document.querySelectorAll(".nav-links a[href]").forEach((link) => {
+  const href = link.getAttribute("href");
+  if (href === currentPath) {
+    link.setAttribute("aria-current", "page");
+  }
 });
 
-// ── Nav scroll shadow ──
-const nav = document.getElementById('main-nav');
-window.addEventListener('scroll', () => {
-  nav.style.boxShadow = window.scrollY > 20
-    ? '0 2px 20px rgba(74,58,38,0.1)'
-    : 'none';
-});
+document.querySelectorAll(".faq-question").forEach((button, index) => {
+  const item = button.closest(".faq-item");
+  const answer = item?.querySelector(".faq-answer");
 
-// ── FAQ accordion ──
-function toggleFaq(btn) {
-  const item = btn.closest('.faq-item');
-  const isOpen = item.classList.contains('open');
-  document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
-  if (!isOpen) item.classList.add('open');
-}
-
-// ── Scroll fade-in ──
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('visible');
-  });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-// ── Waitlist form ──
-// To activate live submissions:
-//   1. Go to formspree.io and sign up (free)
-//   2. Create a new form for Ben@stillwithus.com.au
-//   3. Copy your Form ID and replace YOUR_FORM_ID below
-const FORMSPREE_ID = 'YOUR_FORM_ID';
-
-document.getElementById('waitlist-form').addEventListener('submit', async function(e) {
-  e.preventDefault();
-  const form = e.target;
-  const btn  = form.querySelector('button[type="submit"]');
-  const success = document.getElementById('form-success');
-
-  btn.textContent = 'Sending…';
-  btn.disabled = true;
-
-  // Demo mode — show success without a real submission
-  if (FORMSPREE_ID === 'YOUR_FORM_ID') {
-    setTimeout(() => {
-      form.style.display = 'none';
-      success.style.display = 'block';
-    }, 800);
+  if (!item || !answer) {
     return;
   }
 
-  try {
-    const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
-      method: 'POST',
-      body: new FormData(form),
-      headers: { 'Accept': 'application/json' },
+  const answerId = answer.id || `faq-answer-${index + 1}`;
+  answer.id = answerId;
+  button.setAttribute("aria-expanded", "false");
+  button.setAttribute("aria-controls", answerId);
+
+  button.addEventListener("click", () => {
+    const isOpen = item.classList.contains("open");
+
+    document.querySelectorAll(".faq-item.open").forEach((openItem) => {
+      openItem.classList.remove("open");
+      const openButton = openItem.querySelector(".faq-question");
+      if (openButton) {
+        openButton.setAttribute("aria-expanded", "false");
+      }
     });
 
-    if (res.ok) {
-      form.style.display = 'none';
-      success.style.display = 'block';
-    } else {
-      btn.textContent = 'Something went wrong — please email Ben@stillwithus.com.au';
-      btn.disabled = false;
+    if (!isOpen) {
+      item.classList.add("open");
+      button.setAttribute("aria-expanded", "true");
     }
-  } catch {
-    btn.textContent = 'Something went wrong — please email Ben@stillwithus.com.au';
-    btn.disabled = false;
-  }
+  });
 });
+
+if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.18 });
+
+  document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
+} else {
+  document.querySelectorAll(".reveal").forEach((element) => element.classList.add("is-visible"));
+}
+
+const waitlistForm = document.querySelector("#waitlist-form");
+const formStatus = document.querySelector("#form-status");
+const FORMSPREE_ID = "YOUR_FORM_ID";
+
+if (waitlistForm && formStatus) {
+  waitlistForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    if (FORMSPREE_ID === "YOUR_FORM_ID") {
+      formStatus.textContent = "The form is not connected yet. For now, please email hello@everlemon.org.";
+      formStatus.classList.add("is-error");
+      return;
+    }
+
+    const submitButton = waitlistForm.querySelector('button[type="submit"]');
+
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.textContent = "Sending...";
+    }
+
+    formStatus.textContent = "Sending your details...";
+    formStatus.classList.remove("is-error");
+
+    try {
+      const response = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+        method: "POST",
+        body: new FormData(waitlistForm),
+        headers: { Accept: "application/json" }
+      });
+
+      if (!response.ok) {
+        throw new Error("Form submission failed");
+      }
+
+      waitlistForm.reset();
+      formStatus.textContent = "Thank you. Your details have been sent and EverLemon will be in touch personally.";
+    } catch (error) {
+      formStatus.textContent = "Something went wrong. Please email hello@everlemon.org instead.";
+      formStatus.classList.add("is-error");
+    } finally {
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = "Join the Founding Families";
+      }
+    }
+  });
+}

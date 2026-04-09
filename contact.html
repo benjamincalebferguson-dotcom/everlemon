@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | EverLemon</title>
+  <meta name="description" content="Join the EverLemon waitlist or speak directly with the team.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="contact-page">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="nav-shell" aria-label="Primary">
+      <a class="brandmark" href="index.html" aria-label="EverLemon home">
+        <img src="images/optimized/everlemon-logo.png" alt="EverLemon logo">
+        <span>EverLemon</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="nav-links" id="site-nav">
+        <a href="journey.html">The Journey</a>
+        <a href="stories.html">Stories</a>
+        <a href="impact.html">Impact</a>
+        <a href="contact.html">Contact</a>
+        <a class="button button-primary nav-button" href="contact.html">Join the Waitlist</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="page-hero">
+      <div class="frame-wide page-hero-grid">
+        <div class="page-hero-copy reveal">
+          <p class="eyebrow">Contact EverLemon</p>
+          <h1>Join the first families shaping what this memorial experience becomes.</h1>
+          <p class="lede">
+            This page is designed to feel more complete than a small footer form. It gives visitors context, direct contact details,
+            and a place to raise questions before they commit.
+          </p>
+        </div>
+        <figure class="page-hero-media reveal reveal-delay-1">
+          <img src="images/lemonade-pitcher-fresh.jpg" alt="Fresh lemonade poured into glasses on a table">
+        </figure>
+      </div>
+    </section>
+
+    <section class="frame-wide section-space">
+      <div class="contact-layout">
+        <aside class="contact-card reveal">
+          <p class="eyebrow">Why join now</p>
+          <h2>Help shape the founding version of EverLemon.</h2>
+          <div class="contact-highlights">
+            <p>Living memorial planted in their honour</p>
+            <p>Welcome kit and long-form memorial story</p>
+            <p>Future harvest celebration built around real fruit and real time</p>
+            <p>Direct contact with the founding team during the early stage</p>
+          </div>
+
+          <div class="contact-list">
+            <div>
+              <strong>Email</strong><br>
+              <a href="mailto:hello@everlemon.org">hello@everlemon.org</a>
+            </div>
+            <div>
+              <strong>Phone</strong><br>
+              <a href="tel:+61478003959">0478 003 959</a>
+            </div>
+          </div>
+
+          <figure class="contact-aside">
+            <img src="images/child-smiling-water-pump-community.png" alt="Child smiling outdoors in a community setting">
+          </figure>
+        </aside>
+
+        <div class="contact-card reveal reveal-delay-1">
+          <p class="eyebrow">Waitlist form</p>
+          <h3>Tell EverLemon a little about what brought you here.</h3>
+          <p class="form-note">
+            Replace `YOUR_FORM_ID` in `js/main.js` when you are ready to connect Formspree. Until then, the form will honestly tell visitors it is not live yet.
+          </p>
+
+          <form id="waitlist-form">
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="first-name">First name</label>
+                <input id="first-name" name="first_name" type="text" placeholder="Sarah" required>
+              </div>
+              <div class="form-field">
+                <label for="last-name">Last name</label>
+                <input id="last-name" name="last_name" type="text" placeholder="Williams" required>
+              </div>
+              <div class="form-field full">
+                <label for="email">Email address</label>
+                <input id="email" name="email" type="email" placeholder="sarah@email.com" required>
+              </div>
+              <div class="form-field full">
+                <label for="memorial-type">What kind of memorial are you exploring?</label>
+                <select id="memorial-type" name="memorial_type">
+                  <option value="">Select an option</option>
+                  <option value="human">Human memorial</option>
+                  <option value="pet">Pet memorial</option>
+                  <option value="gift">Gift memorial</option>
+                  <option value="not-sure">Not sure yet</option>
+                </select>
+              </div>
+              <div class="form-field full">
+                <label for="message">Anything you would like to share?</label>
+                <textarea id="message" name="message" placeholder="Tell us about your loved one, or ask a question."></textarea>
+              </div>
+            </div>
+
+            <div class="hero-actions">
+              <button class="button button-primary" type="submit">Join the Founding Families</button>
+              <a class="button button-secondary" href="mailto:hello@everlemon.org">Email instead</a>
+            </div>
+            <p class="form-status" id="form-status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="frame-wide footer-grid">
+      <div>
+        <a class="brandmark brandmark-footer" href="index.html">
+          <img src="images/optimized/everlemon-logo.png" alt="EverLemon logo">
+          <span>EverLemon</span>
+        </a>
+        <p class="footer-copy">A warmer, fuller site ending in a simpler next step.</p>
+      </div>
+      <div>
+        <p class="footer-label">Browse</p>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="journey.html">The Journey</a></li>
+          <li><a href="stories.html">Stories</a></li>
+          <li><a href="impact.html">Impact</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-label">Connect</p>
+        <ul class="footer-links">
+          <li><a href="contact.html">Join the Waitlist</a></li>
+          <li><a href="mailto:hello@everlemon.org">hello@everlemon.org</a></li>
+          <li><a href="tel:+61478003959">0478 003 959</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
