@@ -1904,6 +1904,19 @@ textarea:focus-visible {
   line-height: 1.65;
 }
 
+.page-home .impact-provenance {
+  max-width: 720px;
+  margin: -20px auto 40px;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.page-home .impact-provenance p {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
 .page-home .impact-pledge {
   padding: 48px;
   border: 1px solid rgba(255, 255, 255, 0.2);
